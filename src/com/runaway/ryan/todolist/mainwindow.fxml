@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<BorderPane fx:id="mainBorderPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="com.runaway.ryan.todolist.Controller">
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="File">
+                    <MenuItem onAction="#showNewItemDialog" text="New" />
+                    <SeparatorMenuItem />
+                    <MenuItem onAction="#exitApplication" text="Exit" />
+                </Menu>
+            </MenuBar>
+
+            <ToolBar>
+                <HBox>
+                    <Button onAction="#showNewItemDialog">
+                        <tooltip>
+                            <Tooltip text="Add a new todo item" />
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="@/toolbarButtonGraphics/general/New24.gif" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <ToggleButton text="Today's items" fx:id="filterToogleButton" onAction="#handleFilterButton">
+                        <tooltip>
+                            <Tooltip text="Button down: Show's today's items only. Button Up: Show all items"/>
+                        </tooltip>
+                    </ToggleButton>
+                </HBox>
+            </ToolBar>
+        </VBox>
+    </top>
+    <left>
+        <ListView fx:id="todoListView" onKeyPressed="#handleKeyPressed">
+
+        </ListView>
+    </left>
+    <center>
+        <VBox style="-fx-background-color: white">
+            <Label style="-fx-background-color: white" text="Todo Details" VBox.vgrow="ALWAYS">
+                <font>
+                    <Font name="Times New Roman" size="16" />
+                </font>
+            </Label>
+
+            <TextArea fx:id="todoDetail" wrapText="true" VBox.vgrow="ALWAYS" />
+            <HBox>
+                <Label style="-fx-background-color: white" text="Due: ">
+                    <font>
+                        <Font name="Times New Roman bold" size="22" />
+                    </font>
+                </Label>
+                <Label fx:id="todoDeadline">
+                    <font>
+                        <Font name="Times New Roman bold" size="22" />
+                    </font>
+
+                </Label>
+            </HBox>
+
+        </VBox>
+
+    </center>
+</BorderPane>
